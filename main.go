@@ -22,14 +22,26 @@ func printLetters(char rune) {
 	}
 }
 
+func factorial(num int) int {
+	var result int = 1
+	for i := 2; i <= num; i++ {
+		result *= i
+	}
+	return result
+}
+
 func main() {
 
 	now := time.Now()
 	defer func() {
 		fmt.Printf("Excecution time: %d", time.Since(now))
 	}()
-
-	go prinNumbers(5)
-	printLetters('E')
+	var input_num int
+	fmt.Printf("Enter Number : ")
+	fmt.Scan(&input_num)
+	var result int = factorial(input_num)
+	fmt.Printf("result = %d \n", result)
+	//go prinNumbers(5)
+	//printLetters('E')
 
 }
