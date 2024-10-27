@@ -29,7 +29,7 @@ func main() {
 		fmt.Printf("Excecution time: %d", time.Since(now))
 	}()
 
-	prinNumbers(5)
+	go prinNumbers(5)
 	printLetters('E')
 
 }
