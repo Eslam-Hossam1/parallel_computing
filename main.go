@@ -45,16 +45,20 @@ func main() {
 	defer func() {
 		fmt.Printf("Excecution time: %d", time.Since(now))
 	}()
-
-	signal := make(chan bool)
+	//buffered chanel prefered for complex situations
+	signal := make(chan bool, 2)
 
 	var input_num int
 	fmt.Printf("Enter Number : ")
 	go copy_simulation(20, '/', signal)
+	go copy_simulation(25, '-', signal)
 	fmt.Scan(&input_num)
 	// go copy_simulation(20, '#', signal)
 	var result int = factorial(input_num)
 	fmt.Printf("result = %d \n", result)
+	//unbuffered channel
+	// <-signal
+	// <-signal
 
 	<-signal
 
