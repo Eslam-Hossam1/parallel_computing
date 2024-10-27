@@ -30,11 +30,13 @@ func factorial(num int) int {
 	return result
 }
 
-func copy_simulation(num int, char rune) {
+func copy_simulation(num int, char rune, done chan bool) {
 	for i := num; i >= 1; i-- {
 		fmt.Printf("%c", char)
 		time.Sleep(time.Second)
 	}
+	fmt.Println()
+	done <- true
 }
 
 func main() {
@@ -43,12 +45,18 @@ func main() {
 	defer func() {
 		fmt.Printf("Excecution time: %d", time.Since(now))
 	}()
+
+	signal := make(chan bool)
+
 	var input_num int
 	fmt.Printf("Enter Number : ")
+	go copy_simulation(20, '/', signal)
 	fmt.Scan(&input_num)
-	go copy_simulation(20, '#')
+	// go copy_simulation(20, '#', signal)
 	var result int = factorial(input_num)
 	fmt.Printf("result = %d \n", result)
+
+	<-signal
 
 	//go prinNumbers(5)
 	//printLetters('E')
