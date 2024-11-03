@@ -5,8 +5,10 @@ import (
 )
 
 func main() {
-	channel := make(chan int, 1)
-	channel <- 500         //sending
+	channel := make(chan int, 2) //buffered with capacity = 2
+	channel <- 500 //sendind
+	channel<-600
 	fmt.Println(<-channel) //reciving
+	fmt.Println(<-channel)
 
 }
