@@ -8,9 +8,11 @@ func main() {
 	number := [5]int{1,2,3,4,5} // [1,2,3,4,5]
 	fmt.Println(number)
 
-	slice := number[1:4] // len = 3, capacity = from 1 (first number  or initial whatever) to the end of original array = 4
+	slice := number[1:4] // len = 3, capacity = from 1 (first number in slice brackets  or initial whatever) to the end of original array = 4
 	
-	fmt.Println(slice)
+	fmt.Println(len(slice))
+	fmt.Println(cap(slice))
+
 
 }
 
