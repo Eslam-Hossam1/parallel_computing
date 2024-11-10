@@ -5,12 +5,8 @@ import(
 )
 
 func main() {
-	var wg sync.WaitGroup
-	for i := 1; i<=5; i++{	
-	wg.Add(1)
-	go printNumber(i,&wg)
-	}
-	wg.Wait()
+	number := [5]int{1,2,3,4,5}
+	fmt.Println(number)
 
 }
 
